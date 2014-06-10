@@ -2,50 +2,77 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#2E2E2E" >
+    android:background="#2E2E2E"
+    android:padding="8dp" >
 
-        <TextView
-            android:id="@+id/town_name_text_view"
-            style="@style/topText"
-            android:layout_marginTop="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginBottom="1dp" />
+    <TextView
+        android:id="@+id/town_name_text_view"
+        style="@style/topText" />
             
-        <TextView
-            android:id="@+id/days_left_text_view"
-            style="@style/topText"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/town_name_text_view"
-            android:layout_marginRight="7dp" />
+    <TextView
+        android:id="@+id/days_left_text_view"
+        style="@style/topText"
+        android:layout_alignParentRight="true" />
 
-        <TextView
-            android:id="@+id/cash_text_view"
-            style="@style/moneyText"
-            android:textColor="#00CC00"
-            android:layout_below="@+id/town_name_text_view" />
+    <TextView
+        android:id="@+id/cash_text_view"
+        style="@style/moneyText"
+        android:textColor="#00CC00"
+        android:layout_below="@+id/town_name_text_view" />
+            
+    <TextView
+        android:id="@+id/debt_text_view"
+        style="@style/moneyText"
+        android:textColor="#CC0000"
+        android:layout_below="@+id/cash_text_view" />
+            
+    <TextView
+        android:id="@+id/bank_text_view"
+        style="@style/moneyText"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/debt_text_view" />
+            
+    <TextView
+        android:id="@+id/owned_text_view"
+        android:text="@string/owned"
+        style="@style/drugText"
+        android:layout_below="@+id/bank_text_view" />
+            
+    <TextView
+        android:id="@+id/price_text_view"
+        android:text="@string/price"
+        style="@style/drugText"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/bank_text_view" />
 
-        <TextView
-            android:id="@+id/debt_text_view"
-            style="@style/moneyText"
-            android:textColor="#CC0000"
-            android:layout_below="@+id/cash_text_view" />
+    <ListView
+        android:id="@+id/drugs_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/owned_text_view"
+        android:layout_above="@+id/button_bar" />
+        
+    <LinearLayout
+        android:id="@+id/button_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+        
+        <Button
+            android:id="@+id/move_button"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:text="@string/move" />
             
-        <TextView
-            android:id="@+id/bank_text_view"
-            style="@style/moneyText"
-            android:textColor="#FFFFFF"
-            android:layout_below="@+id/debt_text_view" />
-            
-        <TextView
-            android:id="@+id/owned_text_view"
-            android:text="@string/owned"
-            style="@style/drugText"
-            android:layout_below="@+id/bank_text_view" />
-            
-        <TextView
-            android:id="@+id/price_text_view"
-            android:text="@string/price"
-            style="@style/drugTextRight"
-            android:layout_alignTop="@+id/owned_text_view" />
+        <Button
+            android:id="@+id/menu_button"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:text="@string/menu" />
+        
+    </LinearLayout>
 
 </RelativeLayout>

@@ -19,5 +19,7 @@
     <string name="shrooms">Shrooms</string>
     <string name="oxy">OXY</string>
     <string name="adderall">Adderall</string>
+    <string name="move">Move</string>
+    <string name="menu">Menu</string>
 
 </resources>

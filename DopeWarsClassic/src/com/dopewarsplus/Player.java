@@ -65,6 +65,13 @@ public class Player {
         return false;
     }
     
+    public int getNumDrug(String drug) {
+        if (drugs.containsKey(drug))
+            return drugs.get(drug);
+        else
+            return 0;
+    }
+    
     public int getMoney() {
         return money;
     }
