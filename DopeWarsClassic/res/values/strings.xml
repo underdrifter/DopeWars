@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Dope Wars Plus</string>
+    <string name="new_game">New Game</string>
+    <string name="options">Options</string>
+    <string name="high_scores">High Scores</string>
+    <string name="owned">Owned</string>
+    <string name="price">Price</string>
+    <string name="zero">0</string>
+    <string name="weed">Weed</string>
+    <string name="coke">Coke</string>
+    <string name="heroin">Heroin</string>
+    <string name="speed">Speed</string>
+    <string name="meth">Meth</string>
+    <string name="molly">Molly</string>
+    <string name="pcp">PCP</string>
+    <string name="lsd">LSD</string>
+    <string name="shrooms">Shrooms</string>
+    <string name="oxy">OXY</string>
+    <string name="adderall">Adderall</string>
+
+</resources>
