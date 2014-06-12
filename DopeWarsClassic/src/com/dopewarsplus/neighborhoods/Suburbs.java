@@ -14,7 +14,7 @@ public class Suburbs extends Neighborhood {
         super.onCreate(savedInstanceState);
     }
     
-    @Override
+
     protected void populateFields() {
         ArrayList<String> drugs = new ArrayList<String>();
         drugs.add(Drugs.WEED);
@@ -35,10 +35,9 @@ public class Suburbs extends Neighborhood {
         if (Drugs.r.nextInt(10) > 7)
             drugs.add(Drugs.SHROOMS);
         this.drugs = drugs.toArray(new String[drugs.size()]);
-        factor = 5;
+        priceFactor = 5;
+        crimeFactor = 4;
         name = "Suburbs";
-        selection = "Average";
-        crime = "Low";
     }
 
 }

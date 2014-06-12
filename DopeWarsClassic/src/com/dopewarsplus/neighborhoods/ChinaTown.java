@@ -14,7 +14,6 @@ public class ChinaTown extends Neighborhood {
         super.onCreate(savedInstanceState);
     }
     
-    @Override
     protected void populateFields() {
         ArrayList<String> drugs = new ArrayList<String>();
         drugs.add(Drugs.WEED);
@@ -27,10 +26,9 @@ public class ChinaTown extends Neighborhood {
         if (Drugs.r.nextInt(10) > 7)
             drugs.add(Drugs.COKE);
         this.drugs = drugs.toArray(new String[drugs.size()]);
-        factor = 3;
+        priceFactor = 3;
+        crimeFactor = 7;
         name = "China Town";
-        selection = "Shitty";
-        crime = "High";
     }
 
 }

@@ -35,27 +35,22 @@ import com.example.dopewarsplus.R;
  * This is what the user sees as they play the game.
  */
 public abstract class Neighborhood extends Activity {
-
-    public static final String[] neighborhoodNames =
-        {"Ghetto", "Business District", "China Town", "Downtown", "Suburbs", "Heights"};
+    
+    public String[] NEIGHBORHOOD_NAMES = {"Business District", "China Town", "Downtown", "Ghetto", "Heights", "Suburbs"};
     
     protected Game game;
     protected String name;
-    protected String crime;
-    protected String selection;
-    // lower factor is lower price, should be between 3 and 8, 5 is avg price
-    // i.e. drugs are cheap in the ghetto but expensive in the business district
-    protected int factor;
+    // lower priceFactor is lower price, should be between 3 and 8, 5 is avg price
+    // i.e. drugs are cheap in the ghetto but expensive in the heights
+    protected int priceFactor;
+    // lower crimeFactor is less crime, higher is more, avg 5
+    protected int crimeFactor;
     // both of these, the index in the listview corresponds to the drugs name and price
     protected String[] drugs;
     protected int[] prices;
     protected String currDrug;
     protected int currPrice;
     protected boolean buying; // we are buying if true, selling if false
-    
-    // This method must populate drugs, factor
-    protected abstract void populateFields();
-    
     protected TextView cashView;
     protected TextView debtView;
     protected TextView bankView;
@@ -64,7 +59,9 @@ public abstract class Neighborhood extends Activity {
     protected TextView transactionText;
     protected Button transactionCompleteButton;
     protected SeekBar transactionSeekBar;
-    protected String[] otherNeighborhoodNames;
+    
+    // methods
+    protected abstract void populateFields();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,15 +85,6 @@ public abstract class Neighborhood extends Activity {
         transactionCompleteButton = (Button) findViewById(R.id.finish_transaction_button);
         transactionSeekBar = (SeekBar) findViewById(R.id.transaction_seek_bar);
         
-        otherNeighborhoodNames = new String[5]; // add all names that are not this neighborhood
-        int i = 0;
-        for (String s : neighborhoodNames) {
-            if (!s.equals(this.name)) {
-                otherNeighborhoodNames[i] = s;
-                i++;
-            }
-        }
-        
         game.addDay();
         TextView townNameView = (TextView) findViewById(R.id.town_name_text_view);
         townNameView.setText(this.name);
@@ -108,36 +96,34 @@ public abstract class Neighborhood extends Activity {
     }
     
     public void initiateMove(View view) {
-        
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose Destination")
-               .setItems(otherNeighborhoodNames, new DialogInterface.OnClickListener() {
+               .setItems(NEIGHBORHOOD_NAMES, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int which) {
-                   String dest = otherNeighborhoodNames[which];
-                   Intent intent = new Intent(Neighborhood.this, Ghetto.class);
-                   if (dest.equals("Business District")) {
-                       intent = new Intent(Neighborhood.this, BusinessDistrict.class);
-                   } else if (dest.equals("China Town")) {
-                       intent = new Intent(Neighborhood.this, ChinaTown.class);
-                   } else if (dest.equals("Downtown")) {
-                       intent = new Intent(Neighborhood.this, Downtown.class);
-                   } else if (dest.equals("Heights")) {
-                       intent = new Intent(Neighborhood.this, Heights.class);
-                   } else if (dest.equals("Suburbs")) {
-                       intent = new Intent(Neighborhood.this, Suburbs.class);
+                       String dest = "";
+                       Intent intent = new Intent(Neighborhood.this, Ghetto.class);
+                       if (dest.equals("Business District")) {
+                           intent = new Intent(Neighborhood.this, BusinessDistrict.class);
+                       } else if (dest.equals("China Town")) {
+                           intent = new Intent(Neighborhood.this, ChinaTown.class);
+                       } else if (dest.equals("Downtown")) {
+                           intent = new Intent(Neighborhood.this, Downtown.class);
+                       } else if (dest.equals("Heights")) {
+                           intent = new Intent(Neighborhood.this, Heights.class);
+                       } else if (dest.equals("Suburbs")) {
+                           intent = new Intent(Neighborhood.this, Suburbs.class);
+                       }
+                       startActivity(intent);
+                       Neighborhood.this.finish();
                    }
-                   startActivity(intent);
-                   Neighborhood.this.finish();
-               }
         });
-        AlertDialog alertDialog = builder.create();
-        
-        // show it
-        alertDialog.show();
+        AlertDialog alert = builder.create();
+        alert.show();
     }
     
     public void initiateMenu(View view) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Neighborhood.this);
  
         // set title
         //alertDialogBuilder.setTitle("Your Title");
@@ -167,6 +153,8 @@ public abstract class Neighborhood extends Activity {
             // show it
             alertDialog.show();
     }
+    
+
     
     protected void initiateBuy() {
         buying = true;
@@ -334,7 +322,7 @@ public abstract class Neighborhood extends Activity {
             String drug = drugs[position];
             int price = prices[position];
             if (price == 0) {
-                price = Drugs.getPrice(drug, factor);
+                price = Drugs.getPrice(drug, priceFactor);
                 prices[position] = price;
             }
             TextView qtyTextView = (TextView) v.findViewById(R.id.qty_owned_text_view);

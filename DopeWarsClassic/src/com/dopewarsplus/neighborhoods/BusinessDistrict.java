@@ -14,7 +14,6 @@ public class BusinessDistrict extends Neighborhood {
         super.onCreate(savedInstanceState);
     }
     
-    @Override
     protected void populateFields() {
         ArrayList<String> drugs = new ArrayList<String>();
         drugs.add(Drugs.WEED);
@@ -35,10 +34,9 @@ public class BusinessDistrict extends Neighborhood {
         if (Drugs.r.nextInt(10) > 7)
             drugs.add(Drugs.SHROOMS);
         this.drugs = drugs.toArray(new String[drugs.size()]);
-        factor = 6;
+        priceFactor = 7;
+        crimeFactor = 5;
         name = "Business District";
-        selection = "Average";
-        crime = "Average";
     }
 
 }

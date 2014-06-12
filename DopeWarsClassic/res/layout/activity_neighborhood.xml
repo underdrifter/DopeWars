@@ -89,29 +89,10 @@
         
     </LinearLayout>
         
-    <LinearLayout
+    <fragment android:name="com.dopewarsplus.MoveFragment"
         android:id="@+id/bottom_bar"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
-        
-        <Button
-            android:id="@+id/move_button"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="50"
-            android:text="@string/move"
-            android:onClick="initiateMove" />
-            
-        <Button
-            android:id="@+id/menu_button"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="50"
-            android:text="@string/menu"
-            android:onClick="initiateMenu" />
-        
-    </LinearLayout>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
