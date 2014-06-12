@@ -11,7 +11,7 @@ import java.util.Set;
 
 public abstract class Drugs {
     
-    private static Random r = new Random();
+    public static Random r = new Random();
 
     public static final String WEED = "Weed";
     public static final String COKE = "Cocaine";

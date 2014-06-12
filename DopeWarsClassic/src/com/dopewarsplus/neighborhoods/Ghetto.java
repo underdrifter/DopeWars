@@ -1,5 +1,7 @@
 package com.dopewarsplus.neighborhoods;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 
 import com.dopewarsplus.Drugs;
@@ -7,27 +9,36 @@ import com.dopewarsplus.Neighborhood;
 
 public class Ghetto extends Neighborhood {
     
-     // drugs for sale here
-    
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.name = "Ghetto";
-        this.factor = 3;
     }
     
     @Override
-    protected void onStart() {
-        super.onStart();
-        populateDrugs(drugs);
-    }
-    
-    @Override
-    protected String[] getDrugNames() {
-        String[] drugs = {Drugs.HEROIN, Drugs.LSD, Drugs.METH, Drugs.MOLLY, Drugs.PCP,
-                Drugs.SHROOMS, Drugs.SPEED, Drugs.WEED};
-        return drugs;
+    protected void populateFields() {
+        ArrayList<String> drugs = new ArrayList<String>();
+        drugs.add(Drugs.WEED);
+        drugs.add(Drugs.SPEED);
+        drugs.add(Drugs.METH);
+        drugs.add(Drugs.MOLLY);
+        drugs.add(Drugs.SPEED);
+        if (Drugs.r.nextInt(10) > 2)
+            drugs.add(Drugs.HEROIN);
+        if (Drugs.r.nextInt(10) > 3)
+            drugs.add(Drugs.PCP);
+        if (Drugs.r.nextInt(10) > 4)
+            drugs.add(Drugs.ADDERALL);
+        if (Drugs.r.nextInt(10) > 5)
+            drugs.add(Drugs.OXY);
+        if (Drugs.r.nextInt(10) > 6)
+            drugs.add(Drugs.COKE);
+        if (Drugs.r.nextInt(10) > 7)
+            drugs.add(Drugs.SHROOMS);
+        this.drugs = drugs.toArray(new String[drugs.size()]);
+        factor = 4;
+        name = "Ghetto";
+        selection = "Good";
+        crime = "High";
     }
 
 }

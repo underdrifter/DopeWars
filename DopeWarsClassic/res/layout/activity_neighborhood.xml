@@ -50,10 +50,47 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_below="@+id/owned_text_view"
-        android:layout_above="@+id/button_bar" />
+        android:layout_above="@+id/transaction_bar"
+        android:choiceMode="singleChoice" />
         
     <LinearLayout
-        android:id="@+id/button_bar"
+        android:id="@+id/transaction_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_above="@+id/bottom_bar"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+        
+        <Button
+            android:id="@+id/switch_transaction_mode_button"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:onClick="initiateSwitch" />
+            
+        <TextView
+            android:id="@+id/transaction_text_view"
+            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:textSize="20sp" />
+            
+        <SeekBar
+            android:id="@+id/transaction_seek_bar"
+            android:max="100"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+            
+        <Button
+            android:id="@+id/finish_transaction_button"
+            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:onClick="transactionComplete" />
+            
+        
+    </LinearLayout>
+        
+    <LinearLayout
+        android:id="@+id/bottom_bar"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_alignParentBottom="true"
@@ -64,14 +101,16 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="50"
-            android:text="@string/move" />
+            android:text="@string/move"
+            android:onClick="initiateMove" />
             
         <Button
             android:id="@+id/menu_button"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="50"
-            android:text="@string/menu" />
+            android:text="@string/menu"
+            android:onClick="initiateMenu" />
         
     </LinearLayout>
 

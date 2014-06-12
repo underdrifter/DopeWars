@@ -65,6 +65,10 @@ public class Player {
         return false;
     }
     
+    public int getNumEmptyPockets() {
+        return numPockets - getOccupiedPockets();
+    }
+    
     public int getNumDrug(String drug) {
         if (drugs.containsKey(drug))
             return drugs.get(drug);
